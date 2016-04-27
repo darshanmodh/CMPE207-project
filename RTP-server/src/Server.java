@@ -323,7 +323,7 @@ public class Server extends JFrame implements ActionListener
         }
     }
     
-  //------------------------
+    //------------------------
     //Controls RTP sending rate based on traffic
     //------------------------
     class CongestionController implements ActionListener{
@@ -442,7 +442,7 @@ public class Server extends JFrame implements ActionListener
                 param.setCompressionQuality(compressionQuality);
 
             } catch (Exception ex) {
-                System.out.println("Exception caught: "+ex);
+                System.out.println("Exception caught in image translator: "+ex);
                 System.exit(0);
             }
         }
@@ -453,7 +453,7 @@ public class Server extends JFrame implements ActionListener
                 image = ImageIO.read(new ByteArrayInputStream(imageBytes));
                 writer.write(null, new IIOImage(image, null, null), param);
             } catch (Exception ex) {
-                System.out.println("Exception caught: "+ex);
+                System.out.println("Exception caught in compress: "+ex);
                 System.exit(0);
             }
             return baos.toByteArray();
@@ -464,7 +464,7 @@ public class Server extends JFrame implements ActionListener
             param.setCompressionQuality(compressionQuality);
         }
     }
-    
+   
     //------------------------------------
     //Parse RTSP Request
     //------------------------------------
@@ -525,7 +525,7 @@ public class Server extends JFrame implements ActionListener
                 RTSP_ID = Integer.parseInt(tokens.nextToken());
             }
         } catch(Exception ex) {
-            System.out.println("Exception caught: "+ex);
+            ex.printStackTrace();
             System.exit(0);
         }
         return(request_type);
@@ -576,7 +576,7 @@ public class Server extends JFrame implements ActionListener
             RTSPBufferedWriter.flush();
             System.out.println("RTSP Server - Sent response to Client.");
         } catch(Exception ex) {
-            System.out.println("Exception caught: "+ex);
+            System.out.println("Exception caught in describe: "+ex);
             System.exit(0);
         }
     }

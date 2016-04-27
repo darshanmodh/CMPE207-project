@@ -56,7 +56,6 @@ public class Client{
     int RTSPid = 0; // ID of the RTSP session (given by the RTSP Server)
 
     final static String CRLF = "\r\n";
-    final static String DES_FNAME = "session_info.txt";
 
     //RTCP variables
     //----------------
@@ -198,7 +197,7 @@ public class Client{
 
         public void actionPerformed(ActionEvent e){
 
-            System.out.println("Setup Button pressed !");      
+            System.out.println("Setup Button pressed !"); 
             if (state == INIT) {
                 //Init non-blocking RTPsocket that will be used to receive data
                 try {
